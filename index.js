@@ -3,7 +3,7 @@ var Botkit = require('botkit'),
 
 var people = ['darwin.gautalius', 'stevenihan', 'ahayamb', 'rizaanjariputri', 'timothykevin', 'yclarista', 'eckyputrady', 'ariza.ramaditia', 'aditya', 'jonathancesario', 'dannych', 'sindunuragarp'],
     start = moment('2016-05-09 +0700', 'YYYY-MM-DD ZZ'),
-    reminder = moment('20:38:00 +0700','HH:mm:ss ZZ');
+    reminder = moment('20:40:00 +0700','HH:mm:ss ZZ');
 
 var controller = Botkit.slackbot({});
 
@@ -21,7 +21,7 @@ bot.sendWebhook({
 
 var interval = setInterval(sendWebhook, 1000);
 
-controller.setupWebserver(process.env.port,function(err,webserver) {
+controller.setupWebserver(process.env.PORT,function(err,webserver) {
   controller.createWebhookEndpoints(controller.webserver);
 });
 

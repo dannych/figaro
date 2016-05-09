@@ -14,6 +14,11 @@ var bot = controller.spawn({
 
 bot.configureIncomingWebhook({url: 'https://hooks.slack.com/services/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'});
 
+bot.sendWebhook({
+    text: 'Deployed successfully!',
+    channel: '#test',
+});  
+
 var interval = setInterval(sendWebhook, 1000);
 
 function sendWebhook() {

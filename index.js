@@ -21,10 +21,15 @@ bot.sendWebhook({
 
 var interval = setInterval(sendWebhook, 1000);
 
+controller.setupWebserver(process.env.port,function(err,webserver) {
+  controller.createWebhookEndpoints(controller.webserver);
+});
+
+
 function sendWebhook() {
   var now = moment(),
       diff = now.diff(start,'days'),
-      personInCharge = people[diff];  
+      personInCharge = people[diff % people.length];  
       
   if (now.utc().hour() !== reminder.utc().hour() || now.utc().minute() !== reminder.utc().minute() || now.utc().second() != reminder.utc().second()) return;
           

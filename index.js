@@ -3,7 +3,8 @@ var Botkit = require('botkit'),
 
 var people = ['darwin.gautalius', 'stevenihan', 'ahayamb', 'rizaanjariputri', 'timothykevin', 'yclarista', 'eckyputrady', 'ariza.ramaditia', 'aditya', 'jonathancesario', 'dannych', 'sindunuragarp'],
     start = moment('2016-05-10 +0700', 'YYYY-MM-DD ZZ'),
-    reminder = moment('08:00:00 +0700','HH:mm:ss ZZ');
+    reminder = moment('08:00:00 +0700','HH:mm:ss ZZ'),
+    channel = 'standup';
 
 var controller = Botkit.slackbot({});
 
@@ -16,7 +17,7 @@ bot.configureIncomingWebhook({url: 'https://hooks.slack.com/services/T02Q60A9B/B
 
 bot.sendWebhook({
     text: 'Deployed successfully!',
-    channel: '#test',
+    channel: channel,
 });  
 
 var interval = setInterval(sendWebhook, 1000);
@@ -36,7 +37,7 @@ function sendWebhook() {
   bot.sendWebhook({
     text: 'Hi @' + personInCharge + ', this is just a friendly reminder. Today, you will be in charge as Costumer Service',
     link_names: 1,
-    channel: '#test',
+    channel: channel,
   });  
 }
 

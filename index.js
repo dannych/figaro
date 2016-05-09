@@ -2,8 +2,8 @@ var Botkit = require('botkit'),
     moment = require('moment');
 
 var people = ['darwin.gautalius', 'stevenihan', 'ahayamb', 'rizaanjariputri', 'timothykevin', 'yclarista', 'eckyputrady', 'ariza.ramaditia', 'aditya', 'jonathancesario', 'dannych', 'sindunuragarp'],
-    start = moment('2016-05-09 +0700', 'YYYY-MM-DD ZZ'),
-    reminder = moment('20:45:00 +0700','HH:mm:ss ZZ');
+    start = moment('2016-05-10 +0700', 'YYYY-MM-DD ZZ'),
+    reminder = moment('08:00:00 +0700','HH:mm:ss ZZ');
 
 var controller = Botkit.slackbot({});
 

@@ -3,7 +3,7 @@ var Botkit = require('botkit'),
 
 var people = ['darwin.gautalius', 'stevenihan', 'ahayamb', 'rizaanjariputri', 'timothykevin', 'yclarista', 'eckyputrady', 'ariza.ramaditia', 'aditya', 'jonathancesario', 'dannych', 'sindunuragarp'],
     start = moment('2016-05-09 +0700', 'YYYY-MM-DD ZZ'),
-    reminder = moment('20:40:00 +0700','HH:mm:ss ZZ');
+    reminder = moment('20:45:00 +0700','HH:mm:ss ZZ');
 
 var controller = Botkit.slackbot({});
 
@@ -34,7 +34,7 @@ function sendWebhook() {
   if (now.utc().hour() !== reminder.utc().hour() || now.utc().minute() !== reminder.utc().minute() || now.utc().second() != reminder.utc().second()) return;
           
   bot.sendWebhook({
-    text: 'Hi @' + personInCharge + '.. Just a friendly reminder, today, you will be in charge as Costumer Service',
+    text: 'Hi @' + personInCharge + ', this is just a friendly reminder. Today, you will be in charge as Costumer Service',
     link_names: 1,
     channel: '#test',
   });  

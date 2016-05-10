@@ -3,7 +3,7 @@ var moment = require('moment'),
   customerService = require('../library/customer-service');
 
 var todayReminderTime = moment('08:00:00 +0700','HH:mm:ss ZZ'),
-  tomorrowReminderTime = moment('17:00:00 +0700','HH:mm:ss ZZ'),  
+  nextReminderTime = moment('17:00:00 +0700','HH:mm:ss ZZ'),  
   channel = 'standup'
     
 module.exports = function(bot, controller) {
@@ -27,10 +27,10 @@ function todayReminder(bot, now) {
 }
 
 function tomorrowReminder(bot, now) {
-  if (now.utc().hour() !== tomorrowReminderTime.utc().hour() || now.utc().minute() !== tomorrowReminderTime.utc().minute() || now.utc().second() != tomorrowReminderTime.utc().second()) return;
+  if (now.utc().hour() !== nextReminderTime.utc().hour() || now.utc().minute() !== nextReminderTime.utc().minute() || now.utc().second() != tomorrowReminderTime.utc().second()) return;
           
   bot.sendWebhook({
-    text: 'Hi @' + customerService.getTomorrowCs() + '! Tomorrow, you will be in charge as Costumer Service',
+    text: 'Hi @' + customerService.getNextCs() + '! Tomorrow, you will be in charge as Costumer Service',
     link_names: 1,
     channel: channel,
   }); 

@@ -7,7 +7,7 @@ var todayReminderTime = moment('08:00:00 +0700','HH:mm:ss ZZ'),
   channel = 'standup'
     
 module.exports = function(bot, controller) {
-  setInterval(_.partials(sendWebhook,bot), 1000);    
+  setInterval(_.partial(sendWebhook,bot), 1000);    
 };
 
 function sendWebhook(bot) {

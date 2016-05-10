@@ -25,14 +25,14 @@ var startingDate = moment('2016-05-10 +0700', 'YYYY-MM-DD ZZ'),
      
 function getTodayCs() {
   var now = moment(),
-      diff = now.businessDiff(startingDate,'days'),
+      diff = now.utc().businessDiff(startingDate,'days'),
       personInCharge = people[diff % people.length];  
   return personInCharge;      
 }
 
 function getTomorrowCs() {
   var now = moment(),
-      diff = now.businessDiff(startingDate,'days') + 1,
+      diff = now.utc().businessDiff(startingDate,'days') + 1,
       personInCharge = people[diff % people.length];  
   return personInCharge;      
 }

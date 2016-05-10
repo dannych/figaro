@@ -28,9 +28,20 @@ controller.hears(['whoiscs'],['direct_message','direct_mention','mention'],funct
     bot.reply(message,getTodayCs());
 });
 
+controller.hears(['whoisnextcs'],['direct_message','direct_mention','mention'],function(bot,message) {
+    bot.reply(message,getTomorrowCs());
+});
+
 function getTodayCs() {
   var now = moment(),
       diff = now.diff(start,'days'),
+      personInCharge = people[diff % people.length];  
+  return personInCharge;      
+}
+
+function getTomorrowCs() {
+  var now = moment(),
+      diff = now.diff(start,'days') + 1,
       personInCharge = people[diff % people.length];  
   return personInCharge;      
 }

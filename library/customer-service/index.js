@@ -1,5 +1,7 @@
 var moment = require('moment');
 
+require('./moment-business')(moment);
+
 module.exports = {
   getTodayCs: getTodayCs,
   getTomorrowCs: getTomorrowCs,
@@ -23,14 +25,14 @@ var startingDate = moment('2016-05-10 +0700', 'YYYY-MM-DD ZZ'),
      
 function getTodayCs() {
   var now = moment(),
-      diff = now.diff(startingDate,'days'),
+      diff = now.businessDiff(startingDate,'days'),
       personInCharge = people[diff % people.length];  
   return personInCharge;      
 }
 
 function getTomorrowCs() {
   var now = moment(),
-      diff = now.diff(startingDate,'days') + 1,
+      diff = now.businessDiff(startingDate,'days') + 1,
       personInCharge = people[diff % people.length];  
   return personInCharge;      
 }

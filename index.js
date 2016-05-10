@@ -24,10 +24,8 @@ bot.configureIncomingWebhook({url: 'https://hooks.slack.com/services/T02Q60A9B/B
 
 var slackWebHooke = setInterval(sendWebhook, 1000);    
 
-controller.on('slash_command',function(bot,message) {
-  if (message.command === '/whoiscs') {
-    bot.replyPublic(message,getTodayCs());      
-  }
+controller.hears(['whoiscs'],['direct_message','direct_mention','mention'],function(bot,message) {
+    bot.reply(message,getTodayCs());
 });
 
 function getTodayCs() {

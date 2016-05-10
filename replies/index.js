@@ -11,6 +11,6 @@ module.exports = function(bot, controller) {
   });
 
   controller.hears(['whoisnextcs'],['direct_message','direct_mention','mention'],function(bot,message) {
-      bot.reply(message,customerService.getTomorrowCs());
+      bot.reply(message,customerService.getNextCs());
   });
 };

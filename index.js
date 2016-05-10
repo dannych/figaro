@@ -1,74 +1,20 @@
 var Botkit = require('botkit'),
     moment = require('moment');
+    
+var botReplies  = require('./replies'),
+    botWebhooks = require('./webhooks');
 
-var people = ['darwin.gautalius', 'stevenihan', 'ahayamb', 'rizaanjariputri', 'timothykevin', 'yclarista', 'eckyputrady', 'ariza.ramaditia', 'aditya', 'jonathancesario', 'dannych', 'sindunuragarp'],
-    start = moment('2016-05-10 +0700', 'YYYY-MM-DD ZZ'),
-    todayReminderTime = moment('08:00:00 +0700','HH:mm:ss ZZ'),
-    tomorrowReminderTime = moment('17:00:00 +0700','HH:mm:ss ZZ'),  
-    channel = 'standup';
-
-var controller = Botkit.slackbot({});
-
-var bot = controller.spawn({
+var controller = Botkit.slackbot({}),
+    bot = controller.spawn({
     token: 'xoxb-41188147622-lKNetv4sTev7Bw9ziA6U9jiC'
 }).startRTM();
 
-controller.setupWebserver(process.env.PORT,function(err,webserver) {
-  controller.createWebhookEndpoints(controller.webserver);
-});
-bot.configureIncomingWebhook({url: 'https://hooks.slack.com/services/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'});
+botReplies(bot,controller);
+botWebhooks(bot,controller);
 
+// Send Success Message
+//
 // bot.sendWebhook({
 //     text: 'Deployed successfully!',
 //     channel: channel,
 // });  
-
-var slackWebHooke = setInterval(sendWebhook, 1000);    
-
-controller.hears(['whoiscs'],['direct_message','direct_mention','mention'],function(bot,message) {
-    bot.reply(message,getTodayCs());
-});
-
-controller.hears(['whoisnextcs'],['direct_message','direct_mention','mention'],function(bot,message) {
-    bot.reply(message,getTomorrowCs());
-});
-
-function getTodayCs() {
-  var now = moment(),
-      diff = now.diff(start,'days'),
-      personInCharge = people[diff % people.length];  
-  return personInCharge;      
-}
-
-function getTomorrowCs() {
-  var now = moment(),
-      diff = now.diff(start,'days') + 1,
-      personInCharge = people[diff % people.length];  
-  return personInCharge;      
-}
-
-function sendWebhook() {
-  var now = moment();    
-  todayReminder(now);
-  tomorrowReminder(now);
-}
-
-function todayReminder(now) {
-  if (now.utc().hour() !== todayReminderTime.utc().hour() || now.utc().minute() !== todayReminderTime.utc().minute() || now.utc().second() != todayReminderTime.utc().second()) return;
-          
-  bot.sendWebhook({
-    text: 'Hi @' + getTodayCs() + ', this is just a friendly reminder. Today, you will be in charge as Costumer Service',
-    link_names: 1,
-    channel: channel,
-  });  
-}
-
-function tomorrowReminder(now) {
-  if (now.utc().hour() !== tomorrowReminderTime.utc().hour() || now.utc().minute() !== tomorrowReminderTime.utc().minute() || now.utc().second() != tomorrowReminderTime.utc().second()) return;
-          
-  bot.sendWebhook({
-    text: 'Hi @' + getTomorrowCs() + '! Tomorrow, you will be in charge as Costumer Service',
-    link_names: 1,
-    channel: channel,
-  }); 
-}

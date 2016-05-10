@@ -37,7 +37,8 @@ function getTodayCs() {
   return personInCharge;      
 }
 
-function sendWebhook() {      
+function sendWebhook() {
+  var now = moment();    
   if (now.utc().hour() !== reminder.utc().hour() || now.utc().minute() !== reminder.utc().minute() || now.utc().second() != reminder.utc().second()) return;
           
   bot.sendWebhook({

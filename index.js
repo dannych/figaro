@@ -3,7 +3,8 @@ var Botkit = require('botkit'),
 
 var people = ['darwin.gautalius', 'stevenihan', 'ahayamb', 'rizaanjariputri', 'timothykevin', 'yclarista', 'eckyputrady', 'ariza.ramaditia', 'aditya', 'jonathancesario', 'dannych', 'sindunuragarp'],
     start = moment('2016-05-10 +0700', 'YYYY-MM-DD ZZ'),
-    reminder = moment('08:00:00 +0700','HH:mm:ss ZZ'),  
+    todayReminderTime = moment('08:00:00 +0700','HH:mm:ss ZZ'),
+    tomorrowReminderTime = moment('17:00:00 +0700','HH:mm:ss ZZ'),  
     channel = 'standup';
 
 var controller = Botkit.slackbot({});
@@ -48,11 +49,26 @@ function getTomorrowCs() {
 
 function sendWebhook() {
   var now = moment();    
-  if (now.utc().hour() !== reminder.utc().hour() || now.utc().minute() !== reminder.utc().minute() || now.utc().second() != reminder.utc().second()) return;
+  todayReminder(now);
+  tomorrowReminder(now);
+}
+
+function todayReminder(now) {
+  if (now.utc().hour() !== todayReminderTime.utc().hour() || now.utc().minute() !== todayReminderTime.utc().minute() || now.utc().second() != todayReminderTime.utc().second()) return;
           
   bot.sendWebhook({
     text: 'Hi @' + getTodayCs() + ', this is just a friendly reminder. Today, you will be in charge as Costumer Service',
     link_names: 1,
     channel: channel,
   });  
+}
+
+function tomorrowReminder(now) {
+  if (now.utc().hour() !== tomorrowReminderTime.utc().hour() || now.utc().minute() !== tomorrowReminderTime.utc().minute() || now.utc().second() != tomorrowReminderTime.utc().second()) return;
+          
+  bot.sendWebhook({
+    text: 'Hi @' + getTomorrowCs() + '! Tomorrow, you will be in charge as Costumer Service',
+    link_names: 1,
+    channel: channel,
+  }); 
 }

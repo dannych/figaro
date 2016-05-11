@@ -25,7 +25,7 @@ module.exports = function(bot, controller, config) {
       var daysAgo = +(message.match[1]);
       var latest = moment();
       var oldest = latest.add(-daysAgo, 'd');
-      bot.api.channels.history({ channel: 'standup', latest: latest, oldest: oldest, count: 1000 }, function(err, resp) {
+      bot.api.channels.history({ channel: 'standup', latest: latest.unix(), oldest: oldest.unix(), count: 1000 }, function(err, resp) {
           if (err) {
               bot.reply(message, 'Ooops, something went wrong: `' + err + '`');
           } else {

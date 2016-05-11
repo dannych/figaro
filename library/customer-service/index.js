@@ -9,7 +9,7 @@ module.exports = {
 var startingDate = moment('2016-05-10 +0700', 'YYYY-MM-DD ZZ'),
     people = [
       'darwin.gautalius',
-      'stevenihan',
+      'steven',
       'ahayamb',
       'rizaanjariputri',
       'timothykevin',

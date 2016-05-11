@@ -1,6 +1,6 @@
 var customerService = require('../library/customer-service');
 var standup = require('../library/standup');
-var moment = require('moment'),
+var moment = require('moment');
 var deployedTime = moment();
 
 module.exports = function(bot, controller, config) {

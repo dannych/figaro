@@ -1,7 +1,7 @@
 var customerService = require('../library/customer-service');
 
 module.exports = function(bot, controller, config) {
-  controller.setupWebserver(process.env.PORT,function(err,webserver) {
+  controller.setupWebserver(config.BOT_WEBSERVER_PORT,function(err,webserver) {
     controller.createWebhookEndpoints(controller.webserver);
   });
   bot.configureIncomingWebhook({url: config.SLACK_WEBHOOK_URL});

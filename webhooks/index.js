@@ -3,10 +3,9 @@ var moment = require('moment'),
   customerService = require('../library/customer-service');
 
 var todayReminderTime = moment('08:00:00 +0700','HH:mm:ss ZZ'),
-  nextReminderTime = moment('17:00:00 +0700','HH:mm:ss ZZ'),  
-  channel = 'standup'
+  nextReminderTime = moment('17:00:00 +0700','HH:mm:ss ZZ');
     
-module.exports = function(bot, controller) {
+module.exports = function(bot, controller, config) {
   setInterval(_.partial(sendWebhook,bot), 1000);    
 };
 
@@ -22,7 +21,7 @@ function todayReminder(bot, now) {
   bot.sendWebhook({
     text: 'Hi @' + customerService.getTodayCs() + ', this is just a friendly reminder. Today, you will be in charge as Costumer Service',
     link_names: 1,
-    channel: channel,
+    channel: config.channel,
   });  
 }
 
@@ -32,6 +31,6 @@ function tomorrowReminder(bot, now) {
   bot.sendWebhook({
     text: 'Hi @' + customerService.getNextCs() + '! Tomorrow, you will be in charge as Costumer Service',
     link_names: 1,
-    channel: channel,
+    channel: config.channel,
   }); 
 }

@@ -1,4 +1,5 @@
-var customerService = require('../library/customer-service');
+var customerService = require('../library/customer-service'),
+    randomizer = require('../library/randomize');
 
 module.exports = function(bot, controller, config) {
   controller.setupWebserver(config.BOT_WEBSERVER_PORT,function(err,webserver) {
@@ -11,6 +12,10 @@ module.exports = function(bot, controller, config) {
   });
 
   controller.hears(['whoisnextcs'],['direct_message','direct_mention','mention'],function(bot,message) {
-      bot.reply(message,customerService.getNextCs());
+    bot.reply(message,customerService.getNextCs());
+  });
+  
+  controller.hears(['randomize (.*)'],['direct_message','direct_mention','mention'], function(bot,message) {
+    bot.reply(message,randomizer.randomize(message.match[1]));
   });
 };

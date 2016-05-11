@@ -18,8 +18,8 @@ botReplies(bot,controller,config);
 botWebhooks(bot,controller,config);
 
 // Send Success Message
-//
-// bot.sendWebhook({
-//     text: 'Deployed successfully!',
-//     channel: channel,
-// });  
+
+bot.sendWebhook({
+    text: 'Testing auto deploy!',
+    channel: 'standup',
+});  

@@ -22,11 +22,12 @@ module.exports = function(bot, controller, config) {
   });
 
   controller.hears(['summarize (\\d+)d'],['direct_message','direct_mention','mention'],function(bot,message) {
-      bot.reply(message, 'OK, I will summarize ...');
       var daysAgo = +(message.match[1]);
-      bot.api.search.messages({ query: 'done in:standup', sort: 'timestamp', count: 100 }, function(err, resp) {
+      var latest = moment();
+      var oldest = newest.add(-daysAgo, 'd');
+      bot.api.channels.history({ channel: 'standup', latest: latest, oldest: oldest, count: 1000 }, function(err, resp) {
           if (err) {
-              bot.reply(message, 'Ooops, something went wrong ' + err);
+              bot.reply(message, 'Ooops, something went wrong: `' + err + '`');
           } else {
               var summarized = standup.summarize(resp);
               bot.reply(message, 'Here\'s what the team has been doing for the past ' + daysAgo + ' day(s):\n\n' + summarized);

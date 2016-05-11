@@ -2,11 +2,12 @@ var Botkit = require('botkit'),
     moment = require('moment');
     
 var botReplies  = require('./replies'),
-    botWebhooks = require('./webhooks');
+    botWebhooks = require('./webhooks'),
+    secret = require('./data/secret.json');
     
 var config = {
-  SLACK_BOT_TOKEN: process.env.SLACK_BOT_TOKEN || '',
-  SLACK_WEBHOOK_URL: process.env.SLACK_WEBHOOK_URL || ''
+  SLACK_BOT_TOKEN: process.env.SLACK_BOT_TOKEN || secret.SLACK_BOT_TOKEN,
+  SLACK_WEBHOOK_URL: process.env.SLACK_WEBHOOK_URL || secret.SLACK_WEBHOOK_URL
 };
 
 var controller = Botkit.slackbot({}),

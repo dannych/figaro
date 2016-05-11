@@ -1,5 +1,5 @@
 var moment = require('moment'),
-  _ = require('lodash'),
+  _ = require('lodash'),  
   customerService = require('../library/customer-service');
 
 var todayReminderTime = moment('08:00:00 +0700','HH:mm:ss ZZ'),

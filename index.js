@@ -6,7 +6,7 @@ var botReplies  = require('./replies'),
 
 var controller = Botkit.slackbot({}),
     bot = controller.spawn({
-    token: 'xoxb-41188147622-lKNetv4sTev7Bw9ziA6U9jiC'
+    token: process.env.TOKEN
 }).startRTM();
 
 botReplies(bot,controller);

@@ -1,26 +1,24 @@
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+# Pinocchio
 
+It is a bot
 
-Hi there! Welcome to Cloud9 IDE!
+## BotKit
 
-To get you started, we included a small hello world application.
+A javascript library for creating bot
 
-1) Open the hello-world.html file
+## Heroku
 
-2) Click on the Preview button to open a live preview pane
+Our deploy environment. It's free with a help from Caffeine web app.
 
-3) Make some changes to the file, save, watch the preview, and have fun!
+Any change in `master` will trigger build in Heroku
 
-Happy coding!
-The Cloud9 IDE team
+## Slack
 
+We are making bot for this chat platform.
 
-## Support & Documentation
+- Slack Bot Guide: https://api.slack.com/bot-users
+- Create Bot in Slack: https://my.slack.com/services/new/bot
 
-Visit http://docs.c9.io for documentation, or http://support.c9.io for support.
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+We also use the webhook
+- Slack Webhook Guide: https://api.slack.com/incoming-webhooks
+- Create Webhook: https://my.slack.com/services/new/incoming-webhook/

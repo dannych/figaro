@@ -24,7 +24,7 @@ module.exports = function(bot, controller, config) {
   controller.hears(['summarize (\\d+)d'],['direct_message','direct_mention','mention'],function(bot,message) {
       var daysAgo = +(message.match[1]);
       var latest = moment();
-      var oldest = latest.add(-daysAgo, 'd');
+      var oldest = moment().add(-daysAgo, 'd');
       var standupChannelId = 'C08C5FG4R';
       bot.api.channels.history({ channel: standupChannelId, latest: latest.unix(), oldest: oldest.unix(), count: 1000 }, function(err, resp) {
           if (err) {

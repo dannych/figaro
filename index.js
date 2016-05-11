@@ -19,7 +19,7 @@ botWebhooks(bot,controller,config);
 
 // Send Success Message
 
-bot.sendWebhook({
-    text: 'Testing auto deploy!',
-    channel: 'standup',
-});  
+// bot.sendWebhook({
+//     text: 'Testing auto deploy!',
+//     channel: 'standup',
+// });  

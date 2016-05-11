@@ -35,8 +35,8 @@ function getNextCs() {
 }
 
 function getDiffFromNow(start) {
-  return start.isoWeekdayCalc({  
-    rangeEnd: moment(),  
+  return start.utc().isoWeekdayCalc({  
+    rangeEnd: moment().utc(),  
     weekdays: [1,2,3,4,5],  
     // exclusions: ['6 Apr 2015','7 Apr 2015'],
     // inclusions: ['10 Apr 2015']

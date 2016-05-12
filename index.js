@@ -1,7 +1,7 @@
 var Botkit = require('botkit'),
     moment = require('moment');
     
-var config = require('./config')
+var config = require('./config');
 
 var controller = Botkit.slackbot({}),
     bot = controller.spawn({
@@ -10,8 +10,8 @@ var controller = Botkit.slackbot({}),
 
 var replies  = require('./replies')(bot,controller,config),
     webhooks = require('./webhooks')(bot,controller,config);
-
-// Send Success Message
+    
+// Send Success Message 
 
 // bot.sendWebhook({
 //     text: 'Testing auto deploy!',

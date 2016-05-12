@@ -43,10 +43,11 @@ module.exports = function(bot, controller, config) {
       var usersListF = bluebird.promisify(bot.api.users.list);
 
       function getChannelHistoryExhaustively(prevData, latest, oldest) {
+          bot.reply(message, "I'm reading channel history ... latest=" + latest + " oldest=" + oldest)
           return channelHistoryF({channel: standupChannelId, latest: latest, oldest: oldest, count: 1000})
               .then(function(ret) {
                   var combinedData = prevData.concat(ret.messages);
-                  if (ret.has_more) {
+                  if (ret.messages.length > 0 && ret.has_more) {
                       var curOldest = ret.messages[ret.messages.length - 1].ts;
                       return getChannelHistoryExhaustively(combinedData, curOldest, oldest);
                   } else {

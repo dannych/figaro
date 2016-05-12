@@ -1,6 +1,10 @@
-var customerService = require('../library/customer-service');
-var standup = require('../library/standup');
-var moment = require('moment');
+var _ = require('lodash'),
+    moment = require('moment');
+
+var customerService = require('../library/customer-service'),
+    utility = require('../library/utility'),
+    standup = require('../library/standup');
+    
 var deployedTime = moment();
 
 module.exports = function(bot, controller, config) {
@@ -14,7 +18,15 @@ module.exports = function(bot, controller, config) {
   });
 
   controller.hears(['whoisnextcs'],['direct_message','direct_mention','mention'],function(bot,message) {
-      bot.reply(message,customerService.getNextCs());
+    bot.reply(message,customerService.getNextCs());
+  });
+
+  controller.hears(['randomize (.*)'],['direct_message','direct_mention','mention'], function(bot,message) {
+    bot.reply(message,utility.randomize(message.match[1]));
+  });
+
+  controller.hears(['roll (\\d+)','roll'],['direct_message','direct_mention','mention'], function(bot,message) {
+    bot.reply(message,_.toString(utility.roll(+message.match[1])));
   });
 
   controller.hears(['whendeploy'],['direct_message','direct_mention','mention'],function(bot,message) {

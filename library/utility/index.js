@@ -12,8 +12,6 @@ function randomize(list) {
 }
 
 function roll(num) {
-  console.log(num);
   num = num || 6;
-  console.log(_.random(1,num));
   return _.random(1,num);
 }

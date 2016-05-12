@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 var customerService = require('../library/customer-service'),
     utility = require('../library/utility');
 
@@ -19,7 +21,7 @@ module.exports = function(bot, controller, config) {
     bot.reply(message,utility.randomize(message.match[1]));
   });
 
-  controller.hears(['roll'],['direct_message','direct_mention','mention'], function(bot,message) {
-    bot.reply(message,utility.roll(message.match[1]));
+  controller.hears(['roll (\\d+)','roll'],['direct_message','direct_mention','mention'], function(bot,message) {
+    bot.reply(message,_.toString(utility.roll(+message.match[1])));
   });
 };

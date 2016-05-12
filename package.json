@@ -19,6 +19,7 @@
     "gulp": "3.9.1",
     "gulp-jshint": "^2.0.1",
     "gulp-nodemon": "2.0.7",
-    "jshint": "^2.9.2"
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0"
   }
 }

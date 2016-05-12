@@ -56,7 +56,7 @@ module.exports = function(bot, controller, config) {
       }
 
       var usersListP = usersListF().then(function(x) { return x.members; });
-      var channelHistoryP = getChannelHistoryExhaustively([], latest, oldest);
+      var channelHistoryP = getChannelHistoryExhaustively([], latest.unix(), oldest.unix());
 
       bluebird.join(channelHistoryP, usersListP, function(messagesData, usersData) {
           var summarized = standup.summarize(messagesData, usersData);

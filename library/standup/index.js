@@ -11,7 +11,7 @@ function summarize(messagesData, usersData) {
 }
 
 function usersDict(usersData) {
-  return _.chain(usersData.members)
+  return _.chain(usersData)
           .groupBy('id')
           .mapValues(function(xs) { return xs[0].name; }).value();
 }
@@ -21,7 +21,7 @@ function userUpdatesString(userUpdates) {
 }
 
 function userUpdates(messagesData, users) {
-  return _.chain(messagesData.messages)
+  return _.chain(messagesData)
           .map(statusUpdateMessage)
           .filter(isStatusUpdateMessage)
           .groupBy('user')

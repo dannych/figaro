@@ -26,12 +26,18 @@ module.exports = function(bot, controller, config) {
       var latest = moment();
       var oldest = moment().add(-daysAgo, 'd');
       var standupChannelId = 'C08C5FG4R';
-      bot.api.channels.history({ channel: standupChannelId, latest: latest.unix(), oldest: oldest.unix(), count: 1000 }, function(err, resp) {
+      bot.api.users.list({}, function(err, usersData) {
           if (err) {
-              bot.reply(message, 'Ooops, something went wrong: `' + err + '`');
+              bot.reply(message, 'I was looking up our team members, but this error occured: ' + err);
           } else {
-              var summarized = standup.summarize(resp);
-              bot.reply(message, 'Here\'s what the team has been doing for the past ' + daysAgo + ' day(s):\n\n' + summarized);
+              bot.api.channels.history({ channel: standupChannelId, latest: latest.unix(), oldest: oldest.unix(), count: 1000 }, function(err, messagesData) {
+                  if (err) {
+                      bot.reply(message, 'I was reading channel\'s history, but this error occured: ' + err);
+                  } else {
+                      var summarized = standup.summarize(messagesData, usersData);
+                      bot.reply(message, 'Here\'s what the team has been doing for the past ' + daysAgo + ' day(s):\n\n' + summarized);
+                  }
+              });
           }
       });
   });

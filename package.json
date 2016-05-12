@@ -16,7 +16,7 @@
     "moment-weekday-calc": "1.1.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-nodemon": "^2.0.7"
+    "gulp": "3.9.1",
+    "gulp-nodemon": "2.0.7"
   }
 }

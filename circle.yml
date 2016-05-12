@@ -8,5 +8,5 @@ dependencies:
     - npm install
 
 test:
-  post:
+  override:
     - gulp lint

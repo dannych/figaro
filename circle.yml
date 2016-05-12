@@ -5,8 +5,8 @@ machine:
 dependencies:
   override:
     - npm install -g gulp-cli
-    - npm install --dev
+    - npm install
 
 test:
-  override:
+  post:
     - gulp lint

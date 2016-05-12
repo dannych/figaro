@@ -17,7 +17,7 @@ function usersDict(usersData) {
 }
 
 function userUpdatesString(userUpdates) {
-  return _.chain(['*' + userUpdates.user + '*', '']).concat(userUpdates.updates).join('\n').value() + '\n\n';
+  return _.chain(['*' + userUpdates.user + '*']).concat(userUpdates.updates).join('\n').value() + '\n';
 }
 
 function userUpdates(messagesData, users) {
@@ -49,6 +49,7 @@ function scrapDoneBullets(text) {
           .dropWhile(function(x) { return !x.toLowerCase().startsWith('done') && !x.toLowerCase().startsWith('*done'); })
           .drop(1)
           .takeWhile(function(x) { return x.startsWith('-'); })
+          .map(function(x) { return '>' + x; })
           .value();
 }
 

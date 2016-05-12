@@ -1,4 +1,4 @@
-# Pinocchio
+# Pinocchio [![Circle CI](https://circleci.com/gh/dannych/pinocchio.svg?style=svg&circle-token=09bd53cc4079f5b420b8bbbbfd8fb847de2095c3)](https://circleci.com/gh/dannych/pinocchio)
 
 It is a bot
 

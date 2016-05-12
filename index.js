@@ -10,6 +10,8 @@ var controller = Botkit.slackbot({}),
 
 var replies  = require('./replies')(bot,controller,config),
     webhooks = require('./webhooks')(bot,controller,config);
+    
+    var a = 0; 
 
 // Send Success Message
 

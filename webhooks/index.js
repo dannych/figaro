@@ -21,7 +21,7 @@ function todayReminder(bot, now) {
   bot.sendWebhook({
     text: 'Hi @' + customerService.getTodayCs() + ', this is just a friendly reminder. Today, you will be in charge as Customer Service',
     link_names: 1,
-    channel: config.channel,
+    channel: config.SLACK_CHANNEL,
   });
 }
 
@@ -31,6 +31,6 @@ function tomorrowReminder(bot, now) {
   bot.sendWebhook({
     text: 'Hi @' + customerService.getNextCs() + '! Tomorrow, you will be in charge as Customer Service',
     link_names: 1,
-    channel: config.channel,
+    channel: config.SLACK_CHANNEL,
   });
 }

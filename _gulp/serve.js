@@ -1,8 +1,9 @@
+var lint = require('./lint');
+
 module.exports = function(gulp) {
-  var nodemon = require('nodemon'),
-    lint = require('./lint');
+  var nodemon = require('nodemon');
     
-  nodemon({
+  return nodemon({
     script: 'index.js',
     ext: 'js',
     env: { 

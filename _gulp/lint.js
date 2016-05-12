@@ -1,7 +1,8 @@
-module.exports = function lint(gulp) {
-  var jshint = require('gulp-jshint');
-  
-  gulp.src(['./**/*.js','!node_modules/**/*'])
+var jshint = require('gulp-jshint'),
+    stylish = require('jshint-stylish');
+
+module.exports = function lint(gulp) {  
+  return gulp.src(['./**/*.js','!node_modules/**/*'])
     .pipe(jshint())
-    .pipe(jshint.reporter('default'));
+    .pipe(jshint.reporter(stylish));
 };

@@ -43,7 +43,6 @@ module.exports = function(bot, controller, config) {
       var usersListF = bluebird.promisify(bot.api.users.list);
 
       function getChannelHistoryExhaustively(prevData, latest, oldest) {
-          bot.reply(message, "I'm reading channel history ... latest=" + latest + " oldest=" + oldest)
           return channelHistoryF({channel: standupChannelId, latest: latest, oldest: oldest, count: 1000})
               .then(function(ret) {
                   var combinedData = prevData.concat(ret.messages);
@@ -56,7 +55,7 @@ module.exports = function(bot, controller, config) {
               });
       }
 
-      var usersListP = usersListF().then(function(x) { return x.members; });
+      var usersListP = usersListF({}).then(function(x) { return x.members; });
       var channelHistoryP = getChannelHistoryExhaustively([], latest.unix(), oldest.unix());
 
       bluebird.join(channelHistoryP, usersListP, function(messagesData, usersData) {

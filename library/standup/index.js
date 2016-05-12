@@ -7,7 +7,11 @@ module.exports = {
 
 function summarize(messagesData, usersData) {
   var users = usersDict(usersData);
-  return _.chain(userUpdates(messagesData, users)).map(userUpdatesString).join('\n').value();
+  return _.chain(userUpdates(messagesData, users))
+          .map(userUpdatesString)
+          .orderBy()
+          .join('\n')
+          .value();
 }
 
 function usersDict(usersData) {
@@ -34,13 +38,17 @@ function userUpdates(messagesData, users) {
 function statusUpdateMessage(msg) {
   return {
     ts: msg.ts,
-    updates: scrapDoneBullets(msg.text),
+    updates: _.concat([
+      '> *' + moment((+msg.ts)*1000).format('YYYY-MM-DD HH:mm (dddd)') + '*'],
+      scrapDoneBullets(msg.text),
+      ['']
+    ),
     user: msg.user
   };
 }
 
 function isStatusUpdateMessage(msg) {
-  return msg.updates && msg.updates.length > 0;
+  return msg.updates && msg.updates.length > 2;
 }
 
 function scrapDoneBullets(text) {

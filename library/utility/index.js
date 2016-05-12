@@ -15,3 +15,7 @@ function roll(num) {
   num = num || 6;
   return _.random(1,num);
 }
+
+function redo() {
+  
+}

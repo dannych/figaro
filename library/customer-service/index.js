@@ -2,6 +2,8 @@ var moment = require('moment');
 require('moment-weekday-calc');
 
 module.exports = {
+  isTodayWeekday: isTodayWeekday,
+  isTodayWeekend: isTodayWeekend,
   getTodayCs: getTodayCs,
   getNextCs: getNextCs,
 };
@@ -21,6 +23,20 @@ var startingDate = moment('2016-05-10 +0700', 'YYYY-MM-DD ZZ'),
       'dannych',
       'sindunuragarp'
     ];
+    
+function isTodayFriday() {
+  var day = moment('+0700','ZZ').isoWeekday(); 
+  return day === 5;
+}
+     
+function isTodayWeekend() {
+  var day = moment('+0700','ZZ').isoWeekday(); 
+  return day === 6 || day === 7;
+}
+
+function isTodayWeekday() {
+  return !isTodayWeekend();
+}
      
 function getTodayCs() {
   var diff = getDiffFromNow(startingDate),

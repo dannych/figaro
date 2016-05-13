@@ -12,12 +12,13 @@ module.exports = function(bot, controller, config) {
 function sendWebhook(bot,config) {
   var now = moment();
   todayReminder(bot,config,now);
-  tomorrowReminder(bot,config,now);
+  nextReminder(bot,config,now);
 }
 
 function todayReminder(bot, config, now) {
   if (now.utc().hour() !== todayReminderTime.utc().hour() || now.utc().minute() !== todayReminderTime.utc().minute() || now.utc().second() !== todayReminderTime.utc().second()) return;
-
+  if (customerService.isTodayWeekend()) return;
+  
   bot.sendWebhook({
     text: 'Hi @' + customerService.getTodayCs() + ', this is just a friendly reminder. Today, you will be in charge as Customer Service',
     link_names: 1,
@@ -25,8 +26,16 @@ function todayReminder(bot, config, now) {
   });
 }
 
-function tomorrowReminder(bot, config, now) {
+function nextReminder(bot, config, now) {
   if (now.utc().hour() !== nextReminderTime.utc().hour() || now.utc().minute() !== nextReminderTime.utc().minute() || now.utc().second() !== nextReminderTime.utc().second()) return;
+  if (now.isoWeekday() === 6) return;
+  if (now.isoWeekday() === 5) {
+    return bot.sendWebhook({
+      text: 'Hi @' + customerService.getNextCs() + '! Monday, you will be in charge as Customer Service',
+      link_names: 1,
+      channel: config.SLACK_CHANNEL,
+    });
+  }
 
   bot.sendWebhook({
     text: 'Hi @' + customerService.getNextCs() + '! Tomorrow, you will be in charge as Customer Service',

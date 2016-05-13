@@ -13,8 +13,8 @@ var replies  = require('./replies')(bot,controller,config),
     
 // Send Success Message 
 
-bot.sendWebhook({
-    text: 'Sorry @timothykevin you will be in charge on Monday!',
-    link_names: 1,
-    channel: 'standup',
-});  
+// bot.sendWebhook({
+//     text: 'Sorry @timothykevin you will be in charge on Monday!',
+//     link_names: 1,
+//     channel: 'standup',
+// });  

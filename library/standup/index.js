@@ -21,7 +21,7 @@ function usersDict(usersData) {
 }
 
 function userUpdatesString(userUpdates) {
-  return _.chain(['*' + userUpdates.user + '*']).concat(userUpdates.updates).join('\n').value() + '\n';
+  return _.chain(['*' + userUpdates.user + '*']).concat(userUpdates.updates).join('\n').value() + '\n\n';
 }
 
 function userUpdates(messagesData, users) {
@@ -39,9 +39,8 @@ function statusUpdateMessage(msg) {
   return {
     ts: msg.ts,
     updates: _.concat([
-      '> *' + moment((+msg.ts)*1000).format('YYYY-MM-DD HH:mm (dddd)') + '*'],
-      scrapDoneBullets(msg.text),
-      ['']
+      '> *' + moment((+msg.ts)*1000).utcOffset(7).format('YYYY-MM-DD HH:mm (dddd)') + '*'],
+      scrapDoneBullets(msg.text)
     ),
     user: msg.user
   };

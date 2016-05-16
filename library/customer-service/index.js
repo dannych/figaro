@@ -25,12 +25,12 @@ var startingDate = moment('2016-05-10 +0700', 'YYYY-MM-DD ZZ'),
     ];
     
 function isTodayFriday() {
-  var day = moment('+0700','ZZ').local().isoWeekday(); 
+  var day = moment().isoWeekday(); 
   return day === 5;
 }
      
 function isTodayWeekend() {
-  var day = moment('+0700','ZZ').local().isoWeekday(); 
+  var day = moment().isoWeekday(); 
   return day === 6 || day === 7;
 }
 

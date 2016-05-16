@@ -2,7 +2,7 @@ var moment = require('moment'),
   _ = require('lodash'),
   customerService = require('../library/customer-service');
 
-var todayReminderTime = moment('08:12:00 +0700','HH:mm:ss ZZ'),
+var todayReminderTime = moment('08:00:00 +0700','HH:mm:ss ZZ'),
   nextReminderTime = moment('17:00:00 +0700','HH:mm:ss ZZ');
 
 module.exports = function(bot, controller, config) {
@@ -16,8 +16,8 @@ function sendWebhook(bot,config) {
 }
 
 function todayReminder(bot, config, now) {
-  if (now.utc().hour() !== todayReminderTime.utc().hour() || now.utc().minute() !== todayReminderTime.utc().minute() || now.utc().second() !== todayReminderTime.utc().second()) return;
   if (customerService.isTodayWeekend()) return;
+  if (now.utc().hour() !== todayReminderTime.utc().hour() || now.utc().minute() !== todayReminderTime.utc().minute() || now.utc().second() !== todayReminderTime.utc().second()) return;
   
   bot.sendWebhook({
     text: 'Hi @' + customerService.getTodayCs() + ', this is just a friendly reminder. Today, you will be in charge as Customer Service',

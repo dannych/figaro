@@ -36,6 +36,14 @@ function nextReminder(bot, config, now) {
       channel: config.SLACK_CHANNEL,
     });
   }
+  
+  if (now.isoWeekday() === 7) {
+    bot.sendWebhook({
+      text: 'Hi @' + customerService.getTodayCs() + '! Tomorrow, you will be in charge as Customer Service',
+      link_names: 1,
+      channel: config.SLACK_CHANNEL,
+    });
+  }
 
   bot.sendWebhook({
     text: 'Hi @' + customerService.getNextCs() + '! Tomorrow, you will be in charge as Customer Service',

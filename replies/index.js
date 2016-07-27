@@ -65,4 +65,8 @@ module.exports = function(bot, controller, config) {
           bot.reply(message, 'I was summarizing when I encounter this error: ' + e);
       });
   });
+
+  controller.hears(['sad'],['direct_message','direct_mention','mention'],function(bot,message) {
+    bot.reply(message, ':cry:');
+  });
 };

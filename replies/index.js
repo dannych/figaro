@@ -1,6 +1,6 @@
-var _ = require('lodash'),
-    bluebird = require('bluebird'),
-    moment = require('moment');
+var _ = require('lodash');
+var bluebird = require('bluebird');
+var moment = require('moment');
 
 var customerService = require('../library/customer-service'),
     utility = require('../library/utility'),

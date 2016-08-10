@@ -39,7 +39,7 @@ function nextReminder(bot, config, now) {
   
   if (now.isoWeekday() === 7) {
     return bot.sendWebhook({
-      text: 'Hi @' + customerService.getTodayCs() + '! Tomorrow, you will be in charge as Customer Service',
+      text: 'Hi @' + customerService.getNextCs() + '! Tomorrow, you will be in charge as Customer Service',
       link_names: 1,
       channel: config.SLACK_CHANNEL,
     });

@@ -10,6 +10,7 @@ module.exports = {
 
 var startingDate = moment('2016-08-10 +0700', 'YYYY-MM-DD ZZ');
 var people = [
+      'aditya',
       'jonathancesario',
       'dannych',
       'darwin.gautalius',
@@ -20,7 +21,6 @@ var people = [
       'yclarista',
       'eckyputrady',
       'ariza.ramaditia',
-      'aditya',
     ];
     
 function isTodayFriday() {

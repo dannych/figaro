@@ -57,5 +57,5 @@ function getDiffFromNow(end) {
     inclusions: []
     // exclusions: ['6 Apr 2015','7 Apr 2015'],
     // inclusions: ['10 Apr 2015']
-  }) - 1;
+  }) - 2;
 }

@@ -21,6 +21,7 @@ var people = [
       'yclarista',
       'eckyputrady',
       'ariza.ramaditia',
+      'adeimmanuel'
     ];
     
 function isTodayFriday() {

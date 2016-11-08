@@ -8,8 +8,12 @@ module.exports = {
   getNextCs: getNextCs,
 };
 
-var startingDate = moment('2016-08-10 +0700', 'YYYY-MM-DD ZZ');
+var startingDate = moment('2016-08-11 +0700', 'YYYY-MM-DD ZZ');
 var people = [
+      'yclarista',
+      'eckyputrady',
+      'ariza.ramaditia',
+      'adeimmanuel',
       'aditya',
       'jonathancesario',
       'dannych',
@@ -18,10 +22,6 @@ var people = [
       'ahayamb',
       'rizaanjariputri',
       'timothykevin',
-      'yclarista',
-      'eckyputrady',
-      'ariza.ramaditia',
-      'adeimmanuel'
     ];
     
 function isTodayFriday() {

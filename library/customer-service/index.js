@@ -14,7 +14,6 @@ var people = [
       'rizaanjariputri',
       'timothykevin',
       'yclarista',
-      'eckyputrady',
       'ariza.ramaditia',
       'adeimmanuel',
       'aditya',

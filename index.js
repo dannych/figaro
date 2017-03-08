@@ -6,7 +6,8 @@ var config = require('./config');
 var controller = Botkit.slackbot({}),
     bot = controller.spawn({
       token: config.SLACK_BOT_TOKEN
-    }).startRTM();
+    });
+    // .startRTM();
 
 var replies  = require('./replies')(bot,controller,config);
 // var webhooks = require('./webhooks')(bot,controller,config);

@@ -35,8 +35,8 @@ module.exports = function(bot, controller, config) {
       var daysAgo = +(message.match[1]);
       var latest = moment();
       var oldest = moment().add(-daysAgo, 'd');
-      var standupChannelId = 'C08C5FG4R';
-      var channelHistoryF = bluebird.promisify(bot.api.channels.history);
+      var standupChannelId = 'G0J4T7RKM';
+      var channelHistoryF = bluebird.promisify(bot.api.groups.history);
       var usersListF = bluebird.promisify(bot.api.users.list);
 
       function getChannelHistoryExhaustively(prevData, latest, oldest) {

@@ -42,6 +42,8 @@ module.exports = function(bot, controller, config) {
       var channelHistoryF = bluebird.promisify(bot.api.channels.history);
       var usersListF = bluebird.promisify(bot.api.users.list);
 
+      bluebird.promisify(bot.api.channels.list).then(function(x) { console.log(x); });
+
       function getChannelHistoryExhaustively(prevData, latest, oldest) {
           return channelHistoryF({channel: standupChannelId, latest: latest, oldest: oldest, count: 1000})
               .then(function(ret) {

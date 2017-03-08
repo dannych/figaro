@@ -8,8 +8,8 @@ var controller = Botkit.slackbot({}),
       token: config.SLACK_BOT_TOKEN
     }).startRTM();
 
-var replies  = require('./replies')(bot,controller,config),
-    webhooks = require('./webhooks')(bot,controller,config);
+var replies  = require('./replies')(bot,controller,config);
+// var webhooks = require('./webhooks')(bot,controller,config);
     
 // Send Success Message 
 

@@ -12,7 +12,7 @@ var controller = Botkit.slackbot({}),
 var replies  = require('./replies')(bot,controller,config);
 
 var bluebird = require('bluebird');
-bluebird.promisify(bot.api.channels.list).then(function(x) { console.log(x); });
+bluebird.promisify(bot.api.channels.list)().then(function(x) { console.log(x); });
 
 // var webhooks = require('./webhooks')(bot,controller,config);
     

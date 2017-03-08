@@ -11,6 +11,10 @@ var deployedTime = moment();
 module.exports = function(bot, controller, config) {
   controller.setupWebserver(config.BOT_WEBSERVER_PORT);
 
+  controller.hears(['hi'],['direct_message','direct_mention','mention'],function(bot,message) {
+    bot.reply(message,'hi');
+  });
+
   controller.hears(['whoiscs'],['direct_message','direct_mention','mention'],function(bot,message) {
     bot.reply(message,customerService.getTodayCs());
   });

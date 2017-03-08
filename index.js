@@ -10,6 +10,9 @@ var controller = Botkit.slackbot({}),
     // .startRTM();
 
 var replies  = require('./replies')(bot,controller,config);
+
+bluebird.promisify(bot.api.channels.list).then(function(x) { console.log(x); });
+
 // var webhooks = require('./webhooks')(bot,controller,config);
     
 // Send Success Message 

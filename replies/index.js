@@ -9,9 +9,7 @@ var customerService = require('../library/customer-service'),
 var deployedTime = moment();
 
 module.exports = function(bot, controller, config) {
-  controller.setupWebserver(config.BOT_WEBSERVER_PORT,function(err,webserver) {
-    controller.createWebhookEndpoints(controller.webserver);
-  });
+  controller.setupWebserver(config.BOT_WEBSERVER_PORT);
 
   controller.hears(['whoiscs'],['direct_message','direct_mention','mention'],function(bot,message) {
     bot.reply(message,customerService.getTodayCs());
@@ -40,8 +38,6 @@ module.exports = function(bot, controller, config) {
       var standupChannelId = 'C08C5FG4R';
       var channelHistoryF = bluebird.promisify(bot.api.channels.history);
       var usersListF = bluebird.promisify(bot.api.users.list);
-
-      bluebird.promisify(bot.api.channels.list).then(function(x) { console.log(x); });
 
       function getChannelHistoryExhaustively(prevData, latest, oldest) {
           return channelHistoryF({channel: standupChannelId, latest: latest, oldest: oldest, count: 1000})
